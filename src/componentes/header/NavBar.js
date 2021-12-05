@@ -2,7 +2,8 @@ import React from "react";
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import logoD from './logo-destroy.png';
+import logoD from '../../img/logo-destroy.png';
+import CartWidget from './CartWidget';
 import './NavBar.css';
 
 const NavBar = () => {
@@ -19,6 +20,8 @@ const NavBar = () => {
                                 <Nav.Link href="#accesorios">Accesorios</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
+                        <CartWidget/>
+                       
                     </Container>
                 </Navbar>
             </>

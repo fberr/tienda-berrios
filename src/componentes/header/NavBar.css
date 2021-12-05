@@ -1,4 +1,5 @@
 .logo { width: 120px;}
 
-#miNavbar .container { justify-content: left;}
-.carro { position: absolute; top: 17px; right: 10px;}
+#miNavbar .container { justify-content: left; position: relative;}
+#responsive-navbar-nav { padding-right: 40px;}
+#responsive-navbar-nav a { text-transform: uppercase; color: #fff;}
