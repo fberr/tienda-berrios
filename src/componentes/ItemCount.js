@@ -14,9 +14,8 @@ const restar = () => {
         } 
     } 
 const agregar = () => { 
-    if ((contador > 0) && (stock > 0) ){ 
-        onAdd(contador) 
-    }
+    onAdd(contador);
+    setContador(initial);
 }
 
  return ( 
