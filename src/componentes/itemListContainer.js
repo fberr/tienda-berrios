@@ -3,6 +3,7 @@ import logoBlack from "../img/logo-destroy-negro.png";
 import "./ItemListContainer.css";
 import ItemCount from "./ItemCount";
 import ItemList from "./ItemList";
+import ItemDetailContainer from './ItemDetailContainer';
 
 
 const promises = () => {
@@ -65,7 +66,7 @@ const ItemListContainer = (props) => {
             </div> */}
 
             {/* <ItemCount stock={5} initial={1} onAdd={onAdd} cantidad={cantidad} /> */}
-
+{/* 
             {datos.length === 0 ? (
                 <>
                     <p>loading</p>
@@ -75,10 +76,12 @@ const ItemListContainer = (props) => {
                 </>
             ) : (
                 <ItemList data={datos} />
-            )}
+            )} */}
+
+            <ItemDetailContainer />
 
         </>
         )
 }
 
-export default ItemListContainer
+export default ItemListContainer;
