@@ -1,14 +1,15 @@
 import React from "react";
 import { Cart } from 'react-bootstrap-icons';
+import {Link, NavLink} from 'react-router-dom';
 import './CartWidget.css';
 
 const CartWidget = () => {
     return (
             <>
-                <div className="carro">
+                <NavLink to="/carro" className="carro">
                     <Cart/><span>7</span>
 
-                </div>
+                </NavLink>
                 
 
             </>

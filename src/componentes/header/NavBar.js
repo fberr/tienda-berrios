@@ -4,20 +4,23 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import logoD from '../../img/logo-destroy.png';
 import CartWidget from './CartWidget';
+import {Link, NavLink} from 'react-router-dom';
 import './NavBar.css';
+
 
 const NavBar = () => {
     return (
             <>
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" id="miNavbar">
                     <Container>
-                        <Navbar.Brand href="#home"><img src={logoD} className="logo" /></Navbar.Brand>
+                        <Link className="navbar-brand" to="/"><img src={logoD} className="logo" /></Link>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="ms-auto">
-                                <Nav.Link href="#poleras">Poleras</Nav.Link>
-                                <Nav.Link href="#polerones">Polerones</Nav.Link>
-                                <Nav.Link href="#accesorios">Accesorios</Nav.Link>
+                            <   Link className="nav-link" to="/todos">Productos</Link>
+                                <NavLink className="nav-link" to="/categoria/poleras">Poleras</NavLink>
+                                <Link className="nav-link" to="/categoria/polerones">Polerones</Link>
+                                <Link className="nav-link" to="/categoria/accesorios">Accesorios</Link>
                             </Nav>
                         </Navbar.Collapse>
                         <CartWidget/>

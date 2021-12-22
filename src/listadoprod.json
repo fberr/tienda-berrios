@@ -1,0 +1,34 @@
+[
+    { 
+        "id": "1", 
+        "name": "Polera Goat", 
+        "price": "12000" , 
+        "stock" : "10", 
+        "categoria" : "poleras",
+        "pictureUrl": "https://www.delmalclothing.cl/wp-content/uploads/2021/06/goat.png"
+    },
+    { 
+        "id": "2", 
+        "name": "Poleron Akira", 
+        "price": "30000" , 
+        "stock" : "20", 
+        "categoria" : "polerones",
+        "pictureUrl": "https://i2.wp.com/www.delmalclothing.cl/wp-content/uploads/2021/12/akira-hood.jpg"
+    },
+    { 
+        "id": "3", 
+        "name": "Gorro DM", 
+        "price": "6000" , 
+        "stock" : "30", 
+        "categoria" : "accesorios",
+        "pictureUrl": "https://i0.wp.com/www.delmalclothing.cl/wp-content/uploads/2021/08/negro-izquierda.png"
+    },
+    { 
+        "id": "4", 
+        "name": "Polera Kali", 
+        "price": "13000" , 
+        "stock" : "40", 
+        "categoria" : "poleras",
+        "pictureUrl": "https://www.delmalclothing.cl/wp-content/uploads/2021/06/kali.png"
+    }
+]
