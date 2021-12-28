@@ -1,31 +1,36 @@
 import React, { useState } from 'react';
+import "./ItemCount.css";
 
-const ItemCount = ({ stock, initial, onAdd, cantidad }) => {
- let [contador, setContador] = useState(initial);
+const ItemCount = ({ stock, initial, onAdd }) => {
+    let [contador, setContador] = useState(initial);
 
-const sumar = () => { 
-     if (contador < stock ) { 
-         setContador(contador + 1); 
-        } 
+    const sumar = () => {
+        if (contador < stock) {
+            setContador(contador + 1);
+        }
     }
-const restar = () => { 
-     if (contador > 1) { 
-         setContador(contador -1); 
-        } 
-    } 
-const agregar = () => { 
-    onAdd(contador);
-    setContador(initial);
-}
+    const restar = () => {
+        if (contador > 1) {
+            setContador(contador - 1);
+        }
+    }
+    const agregar = () => {
+        onAdd(contador);
+        setContador(initial);
+    }
 
- return ( 
-    <> 
-        <br></br>
-        <button  className="btn btn-secondary" onClick={restar}>-</button> 
-        <span  className="btn btn-outline-danger">{contador}</span> 
-        <button  className="btn btn-secondary" onClick={sumar}>+</button> 
-        <button  className="btn btn-danger" onClick={agregar}>Agregar</button>
-        <div>Agregado al carro: <span className="cantidad">{cantidad} </span> </div> 
-    </>
-);}
+    return (
+        <>
+            <div className="box-counter">
+                <button className="btn btn-outline-secondary" onClick={restar}>-</button>
+                <span className="numero">{contador}</span>
+
+                <button className="btn btn-outline-secondary" onClick={sumar}>+</button>
+                <div>
+                    <button className="btn btn-danger" onClick={agregar}>Agregar</button>
+                </div>
+            </div>
+        </>
+    );
+}
 export default ItemCount;
