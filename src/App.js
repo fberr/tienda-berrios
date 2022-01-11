@@ -7,6 +7,7 @@ import Home from './componentes/Home';
 import CartWidget from './componentes/header/CartWidget';
 import ItemDetailContainer from './componentes/ItemDetailContainer';
 import Carrito from './componentes/Carrito';
+import {CustomProvider} from './componentes/CartContext';
 
 
 
@@ -14,27 +15,22 @@ import Carrito from './componentes/Carrito';
 
 const App = () => {
     return ( 
-        
-        <BrowserRouter>
-            <NavBar/>
-            <Container className="mt-5 text-center">
-                <Routes>
-                    <Route path="/" element={<Home/>} />
-                    <Route path="/todos" element={<ItemListContainer greeting="Hola amig@s, bienvenid@s a la Tienda Destroy !!"/>} />
-                    <Route path="/carro" element={<Carrito/>} />
-                    <Route path="/categoria/:cat" element={<ItemListContainer greeting="Hola amig@s, bienvenid@s a la Tienda Destroy !!"/>} />
-                    <Route path="/producto/:id" element={<ItemDetailContainer/>} />
-                    <Route path="*" />
-                    
-
-                </Routes>
-            </Container>
-            
-            {/* <Container className="mt-5 text-center">
-                <ItemListContainer greeting="Hola amig@s, bienvenid@s a la Tienda Destroy !!"/>
-            </Container> */}
-        </BrowserRouter>
-        
+            <CustomProvider>
+            <BrowserRouter>
+                <NavBar/>
+                <Container className="mt-5 text-center">
+                    <Routes>
+                        <Route path="/" element={<Home/>} />
+                        <Route path="/todos" element={<ItemListContainer greeting="Hola amig@s, bienvenid@s a la Tienda Destroy !!"/>} />
+                        <Route path="/carro" element={<Carrito/>} />
+                        <Route path="/categoria/:cat" element={<ItemListContainer greeting="Hola amig@s, bienvenid@s a la Tienda Destroy !!"/>} />
+                        <Route path="/producto/:id" element={<ItemDetailContainer/>} />
+                        <Route path="*" />
+                    </Routes>
+                </Container>
+            </BrowserRouter>
+            </CustomProvider>
+         
     ) 
     
 }

@@ -1,8 +1,14 @@
 import ItemCount from './ItemCount';
 import { useState } from 'react';
+// import { useHistory } from "react-router-dom";
+import { useContext } from 'react';
+import { contexto } from './CartContext';
 
 
 const ItemDetail = ({ producto }) => {
+
+    // const {push} = useHistory()
+    const { agregarProducto } = useContext(contexto)
 
     const [cantidad, setCantidad] = useState();
     const [mostrar, setMostrar] = useState(true);
@@ -15,7 +21,8 @@ const ItemDetail = ({ producto }) => {
         setCantidad(contador);
         setMostrar(false);
         console.log(mostrar);
-        redireccion(redirigir);
+        agregarProducto(contador, producto)
+       // redireccion(redirigir);
        
     }
 
@@ -41,12 +48,12 @@ const ItemDetail = ({ producto }) => {
                     <p style={{ fontFamily: 'Arial' }}>stock: {producto.stock}</p>
                     <hr />
                     <h5 className="mt-4">PRECIO: ${producto.price}</h5>
-                    <p>Tu Carro tiene {cantidad ? cantidad : ' 0'} productos</p>
+                    {/* <p>Tu Carro tiene {cantidad ? cantidad : ' 0'} productos</p> */}
 
                     {mostrar != false 
                     ? 
                         <ItemCount stock={producto.stock} initial={1} onAdd={onAdd} cantidad={cantidad} />
-                    :  <p>Productos añadidos con éxito, serás redirigido al Carro de Compra!!</p>
+                    :  <p>Productos añadidos con éxito!!</p>
 
                     }
                 </div>
