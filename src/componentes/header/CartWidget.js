@@ -10,9 +10,9 @@ const CartWidget = () => {
     const {cart, agregarProducto} = useContext(contexto)
 
     console.log(cart)
-    console.log(cart.cantidades)
+    
  
-   
+  
         const suma = cart.map(item => item.cantidades).reduce((a, b) => a + b, 0);
         console.log(suma);
 
@@ -22,7 +22,7 @@ const CartWidget = () => {
     return (
             <>
                 <NavLink to="/carro" className="carro">
-                    <Cart/><span> {cart.length ? suma : '0' }</span>
+                    <Cart/><span> {cart.length ? suma : null }</span>
 
                 </NavLink>
                 

@@ -3,6 +3,7 @@ import { useState } from 'react';
 // import { useHistory } from "react-router-dom";
 import { useContext } from 'react';
 import { contexto } from './CartContext';
+import {Link} from 'react-router-dom';
 
 
 const ItemDetail = ({ producto }) => {
@@ -48,12 +49,17 @@ const ItemDetail = ({ producto }) => {
                     <p style={{ fontFamily: 'Arial' }}>stock: {producto.stock}</p>
                     <hr />
                     <h5 className="mt-4">PRECIO: ${producto.price}</h5>
-                    {/* <p>Tu Carro tiene {cantidad ? cantidad : ' 0'} productos</p> */}
+                   
 
                     {mostrar != false 
                     ? 
                         <ItemCount stock={producto.stock} initial={1} onAdd={onAdd} cantidad={cantidad} />
-                    :  <p>Productos añadidos con éxito!!</p>
+                    :  
+                    <>
+                        <p>Productos añadidos con éxito!!</p>
+                        <Link to="/carro" className="btn btn-danger">TERMINAR MI COMPRA</Link>
+                    </>
+
 
                     }
                 </div>

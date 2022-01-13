@@ -6,6 +6,7 @@ import ItemList from "./ItemList";
 import ItemDetailContainer from './ItemDetailContainer';
 import { useParams } from "react-router-dom";
 import listadoprod from '../listadoprod.json';
+import {db} from "./firebase";
 
 // const misproductos = [
 //     { id: 1, name: "Polera 1", price: 100 , stock : 10, categoria : "poleras"},
