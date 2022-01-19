@@ -5,7 +5,7 @@ import {Link, NavLink} from 'react-router-dom';
 
 
 const Carrito = () => {
-    const { cart, borrarProducto } = useContext(contexto)
+    const { cart, borrarProducto, vaciar } = useContext(contexto)
 
     console.log(cart);
    
@@ -63,6 +63,7 @@ const Carrito = () => {
 
                     ))}
                     <br/>
+                    <button onClick={() => vaciar()} style={{float: 'left'}} className="btn btn-danger">Borrar todo</button>
                     <div style={{float: 'right'}}>
                     <h3>Total: <span>{total}</span></h3>
                     </div>

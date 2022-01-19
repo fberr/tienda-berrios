@@ -16,6 +16,9 @@ const ItemDetail = ({ producto }) => {
     const [redirigir, setRedirigir] = useState();
 
 
+    console.log(producto.id)
+
+
     const onAdd = (contador) => {
         console.log('producto agregado');
         console.log(contador);

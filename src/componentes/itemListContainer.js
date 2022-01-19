@@ -5,19 +5,18 @@ import ItemCount from "./ItemCount";
 import ItemList from "./ItemList";
 import ItemDetailContainer from './ItemDetailContainer';
 import { useParams } from "react-router-dom";
-import listadoprod from '../listadoprod.json';
+// import listadoprod from '../listadoprod.json';
 import {db} from "./firebase";
+import {getDocs, query, collection, where} from "firebase/firestore";
 
-// const misproductos = [
-//     { id: 1, name: "Polera 1", price: 100 , stock : 10, categoria : "poleras"},
-//     { id: 2, name: "Poleron 1", price: 200 , stock : 20, categoria : "polerones"},
-//     { id: 3, name: "Accesorio 1", price: 300 , stock : 30, categoria : "accesorios"},
-//     { id: 4, name: "Polera 2", price: 400 , stock : 40, categoria : "poleras"},
-// ]
+console.log(db);
+ 
+
+
+
+
 
 const ItemListContainer = (props) => {
-
-    console.log(listadoprod);
 
     const {cat} = useParams();
     const [cantidad, setCantidad] = useState();
@@ -29,30 +28,122 @@ const ItemListContainer = (props) => {
         setCantidad(contador)
     }
 
-   useEffect(() => { 
-    
-        if(cat) {
-            console.log('cat');
-            const promises = () => {
-                return new Promise((resolve,reject) => {
-                    setTimeout( () => resolve (
-                         listadoprod.filter(producto => producto.categoria === cat),
-                ), 500 )
-                })
-            }
-            promises().then(datos => setDatos(datos))
-        
+    useEffect(() => {
+
+        const productosCollection = collection(db, "productos")
+
+        if (cat) {
+
+            const consulta = query(productosCollection,where("categoria","==",cat))
+            getDocs(consulta)
+            .then(({ docs }) => {
+                const confiltro = docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+                setDatos(confiltro)
+                console.log(confiltro)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
         } else {
-            console.log('no cat')
-            const promises = () => {
-                return new Promise((resolve,reject) => {
-                    setTimeout( () => resolve (listadoprod), 500
-                    )
+            getDocs(productosCollection)
+                .then(({ docs }) => {
+                    const sinfiltro = docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+                    setDatos(sinfiltro)
+                    console.log(sinfiltro)
                 })
-            }
-            promises().then(datos => setDatos(datos))
+                .catch((error) => {
+                    console.log(error)
+                })
+
+
+
         }
+
+        // getDocs(productosCollection)
+        //     .then((resultado) => {
+        //         const docs = resultado.docs
+        //         console.log(docs)
+        //         const lista = docs.map((doc) => {
+        //             const id = doc.id
+        //             const data = doc.data()
+        //             const producto = {
+        //                 id : id,
+        //                 ...data
+
+        //             }
+        //             return producto
+        //         })
+
+        //         console.log(lista);
+
+
+        //         setDatos(lista)
+
+               
+
+
+
+        //     })
+
+            
+
+            // if(cat) {
+            //     console.log('cat');
+            //     const promises = () => {
+            //         return new Promise((resolve,reject) => {
+            //             setTimeout( () => resolve (
+            //                 lista.filter(producto => producto.categoria === cat),
+            //         ), 500 )
+            //         })
+            //     }
+            //     promises().then(datos => setDatos(datos))
+            
+            // } else {
+            //     setDatos(lista)
+                
+                // console.log('no cat')
+                // const promises = () => {
+                //     return new Promise((resolve,reject) => {
+                //         setTimeout( () => resolve (listadoprod), 500
+                //         )
+                //     })
+                // }
+                // promises().then(datos => setDatos(datos))
+            // }
+            
+       
     }, [cat])
+
+
+
+    // console.log(listadoprod);
+
+   
+
+//    useEffect(() => { 
+    
+//         if(cat) {
+//             console.log('cat');
+//             const promises = () => {
+//                 return new Promise((resolve,reject) => {
+//                     setTimeout( () => resolve (
+//                          listadoprod.filter(producto => producto.categoria === cat),
+//                 ), 500 )
+//                 })
+//             }
+//             promises().then(datos => setDatos(datos))
+        
+//         } else {
+//             console.log('no cat')
+//             const promises = () => {
+//                 return new Promise((resolve,reject) => {
+//                     setTimeout( () => resolve (listadoprod), 500
+//                     )
+//                 })
+//             }
+//             promises().then(datos => setDatos(datos))
+//         }
+//     }, [cat])
 
     // const [scroll, setScroll] = useState(false);
     //     useEffect(() => {
