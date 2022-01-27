@@ -4,6 +4,7 @@ import { contexto } from './CartContext';
 import { Link, NavLink } from 'react-router-dom';
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "./firebase";
+import CartForm from "./CartForm";
 
 
 const Carrito = () => {
@@ -54,6 +55,7 @@ const Carrito = () => {
     return (
         <>
             <h1 style={{ marginBottom: 40 }}>Tu Carro</h1>
+            <CartForm></CartForm>
 
             {finalizado === true ?
                 <>
