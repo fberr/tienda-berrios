@@ -1,47 +1,20 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import { contexto } from './CartContext';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "./firebase";
 import CartForm from "./CartForm";
 
 
 const Carrito = () => {
+    
     const { cart, borrarProducto, vaciar} = useContext(contexto)
-
     const [finalizado, setFinalizado] = useState(false);
     const [showOrder, setshowOrder] = useState();
-    const [state, setstate] = useState();
-
-
-    console.log(finalizado);
-
-
-
-  
-
-    const holaSession = () => { 
-
-     }
     
-
-    
-
-
-
-
-
-     
-
-
-
     const finalizarCompra = (campos) => {
-        console.log('guardando la compra en la db ');
-        console.log(campos);
         
-
-
         const ventasCollection = collection(db, "ventas")
         addDoc(ventasCollection, {
             buyer: campos,
@@ -52,41 +25,19 @@ const Carrito = () => {
         })
             .then((resultado) => {
                 setFinalizado(true);
-                console.log(resultado.id);
                 setshowOrder(resultado.id)
-                
                 vaciar();
             })
-
-        console.log(finalizado);
     }
 
-    console.log(cart);
-
-
-    
-
     const subtotal = cart.map(function (value) {
-
         return value.producto.price * value.cantidades;
-
     });
 
     const total = subtotal.reduce((a, b) => a + b, 0);
-
-    console.log(subtotal)
-    console.log(total)
-
-    return (
+    
+return (
         <>
-        
-        
-
-      
-
-            
-            
-
             {finalizado === true ?
                 <>
                     <h2>Felicidades !!</h2>
@@ -96,24 +47,22 @@ const Carrito = () => {
                 </>
                 :
                 <>
-                     <h1 style={{ marginBottom: 40 }}>Tu Carro</h1>
+                    <h1 style={{ marginBottom: 40 }}>Tu Carro</h1>
                     {cart.length === 0 ?
                         <>
                             <h3>El carro esta vacio ;(</h3><br />
                             <Link to="/todos" className="btn btn-danger" style={{marginBottom: '80px'}}>Ir a Productos</Link>
-                            
                         </>
                         :
                         <>
-                            
-                            {cart.map(item => (
+                           {cart.map(item => (
                                 <div style={{
                                     display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px dotted lightgrey',
                                     padding: '13px 10px'
                                 }} key={item.producto.id} id={item.producto.id}>
                                     <div>
                                         <p>{item.producto.name}</p>
-                                        <img src={item.producto.pictureUrl} style={{ width: 100 }} />
+                                        <img src={item.producto.pictureUrl} style={{ width: 100 }} alt={item.producto.name} />
                                     </div>
                                     <div>
                                         

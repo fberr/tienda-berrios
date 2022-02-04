@@ -4,7 +4,6 @@ import NavBar from "./componentes/header/NavBar"
 import ItemListContainer from "./componentes/itemListContainer";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Home from './componentes/Home';
-import CartWidget from './componentes/header/CartWidget';
 import ItemDetailContainer from './componentes/ItemDetailContainer';
 import Carrito from './componentes/Carrito';
 import {CustomProvider} from './componentes/CartContext';

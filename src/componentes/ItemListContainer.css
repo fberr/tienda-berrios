@@ -1,7 +1,7 @@
-.logo-negro { width: 500px;}
-.cuadro-bienvenida { background: #000; color: #f1f1f1;
-    
+.cuadro-bienvenida { 
+    background: #000; 
+    color: #f1f1f1;
     margin: 0 auto;
     padding: 15px;
-    }
-    .cuadro-bienvenida h2 { font-size: 20px;}
+}
+.cuadro-bienvenida h2 { font-size: 20px;}

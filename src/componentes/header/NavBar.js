@@ -13,7 +13,7 @@ const NavBar = () => {
             <>
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" id="miNavbar">
                     <Container>
-                        <Link className="navbar-brand" to="/"><img src={logoD} className="logo" /></Link>
+                        <Link className="navbar-brand" to="/"><img src={logoD} className="logo" alt="logo" /></Link>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="ms-auto">
@@ -31,4 +31,4 @@ const NavBar = () => {
         )
 }
 
-export default NavBar
+export default NavBar;

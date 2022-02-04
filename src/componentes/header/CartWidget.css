@@ -1,9 +1,15 @@
-.carro { color: white;
-    background-color: darkmagenta;
+.carro { 
+    color: white;
+    background-color: #dc3545;
     padding: 5px;
-     position: absolute; top: 7px; right: 0px;}
-    .carro svg { margin-right: 5px; width: 22px; height: 22px;}
-    .carro span { font-size: 16px; font-family: Arial;}
+    position: absolute; 
+    top: 7px; 
+    right: 0px; 
+    text-decoration: none;
+}
+    .carro svg { margin-right: 2px; width: 22px; height: 22px;}
+    .carro span { font-size: 16px; font-family: Arial; text-decoration: none;}
+    .carro:hover { color: #ccc;}
 
 @media (max-width: 567px) {
     .carro { right: 17px;}
