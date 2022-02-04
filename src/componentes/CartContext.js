@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { FileEarmarkSlides } from "react-bootstrap-icons";
 
 export const contexto = createContext()
@@ -8,6 +8,7 @@ export const { Provider } = contexto
 export const CustomProvider = ({ children }) => {
 
     const [cart, setCart] = useState([])
+    
 
     const agregarProducto = (cantidades, producto) => {
 
@@ -29,14 +30,20 @@ export const CustomProvider = ({ children }) => {
         setCart(copia)
         console.log(producto)
         console.log(nuevoProducto.producto['id'])
-        console.log(copia)
-    }
+        console.log(copia);
+        console.log(cart);
 
-    const isInCart = () => {
+        
+       
        
 
     }
 
+
+  
+
+
+    
     const borrarProducto = (itemId) => {
 
         console.log(itemId)
@@ -55,8 +62,7 @@ export const CustomProvider = ({ children }) => {
         cart: cart,
         agregarProducto: agregarProducto,
         borrarProducto: borrarProducto,
-        vaciar: vaciar,
-        isInCart: isInCart
+        vaciar: vaciar
     }
 
     return (

@@ -1,115 +1,138 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const CartForm = () =>  {
 
-  
+
+
+const CartForm = ({finalizarCompra}) => {
+
+   
+
+
     const [campos, setCampos] = useState({
         nombre: "",
         apellido: "",
         fono: "",
-        email: ""
+        email: "",
         
-    })
-    const [NombreValida, setNombreValida] = useState(false)
-    const [ApellidoValida, setApellidoValida] = useState(false)
-    const [EmailValida, setEmailValida] = useState(false)
-    const [ValidaTodo, setValidaTodo] = useState(false)
 
-
+  })
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
+    
 
     const leerCampos = (e) => {
-        const value = e.target.value;
-        setCampos({
+        let name = e.target.name;
+        let value = e.target.value;
+
+        setCampos( {
             ...campos,
-            [e.target.name]: value
-        });
+            [name]: value,
+
+         })
+     }
+
+     const exitoso = () => {
+        console.log('EXITOSO');
+      
+
+
+      }
+
+    
+let enviarExito = false;
+     useEffect(() => {
+        
+        console.log('useeffect', formErrors);
+        console.log('enviarExito antes', enviarExito);
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+          console.log('todos los campos:', campos);
+          console.log('envio con exito');
+          enviarExito = true;
+          console.log('enviarExito despues', enviarExito);
+          exitoso();
+          finalizarCompra(campos);
+          
+        
+          
+
+          
+
+        }
+      }, [formErrors]);
+
+    const validation = (values) => {
+        const errors = {};
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        if (!values.nombre) {
+            errors.nombre = "El campo nombre es obligatorio";
+        }
+        if (!values.apellido) {
+            errors.apellido = "El campo apellido es obligatorio";
+        }
+        if (!values.fono) {
+            errors.fono = "El telefono es obligatorio";
+        }
+
+        if (!values.email) {
+            errors.email = "El email es obligatorio";
+          } else if (!regex.test(values.email)) {
+            errors.email = "El correo no tiene un formato válido";
+          }
+        
+        console.log('validation', errors);
+        console.log('validation formerrors', formErrors);
+
+
+        return errors;
+        
 
 
     }
-    const validation = () => {
 
-        console.log(campos['nombre']);
-        if (!campos['nombre']) {
-            setNombreValida(false)
-            console.log(' el nombre esta vacio');
-            console.log(NombreValida);
-        } else {
-            setNombreValida(true)
-            console.log(' el nombre correcto');
-            console.log(NombreValida);
-
-        }
-
-        if (!campos['apellido']) {
-            setApellidoValida(false)
-            console.log(' el apellido esta vacio');
-        } else {
-            setApellidoValida(true)
-        }
-
-        const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-       
-            
-            if(campos['email'].match(mailformat) ) {
-                setEmailValida(true)
-                console.log('email validado')
-            } else {
-                setEmailValida(false)
-                console.log('email erroneo')
-            }
-        
-
-        
-        console.log(NombreValida);
-        console.log(ApellidoValida);
-        console.log(EmailValida);
-
-
-       
-
-        // return ValidaTodo
-        
-    }
-   
     const enviarForm = (e) => {
-        e.preventDefault();
-        validation();
-        // if ( NombreValida === true && ApellidoValida === true && EmailValida === true) {
+       e.preventDefault();
+      
+        setFormErrors(validation(campos));
+        setIsSubmit(true);
         
-        //     setValidaTodo(true);
 
-        //     console.log('maldito', ValidaTodo);
-        // } else {
-        //     setValidaTodo(false);
-        //     console.log('todofalse', ValidaTodo);
-
-        // }
-        // console.log(validation())
-        // console.log('hola click enviar');
-        // console.log(campos);
+        console.log('enviarForm', formErrors)
+        
+        
     }
+
+    console.log('enviarExito despues 2', enviarExito);
 
 
     return (
         <>
-            <h1>Formulario</h1>
-            <h4>Completa el siguiente formulario para finalizar tu compra:</h4>
-            <div style={{ margin: "0 auto", display: "block", maxWidth: "600px"}}>
-                <input type="text" name="nombre"  className="form-control" placeholder="Nombre" onChange={leerCampos} value={campos.nombre} />
-                { NombreValida == false && <p>El campo nombre es requerido</p>   }
-                
-                <input type="text" name="apellido"  className="form-control" placeholder="Apellido" onChange={leerCampos} value={campos.apellido}/>
-                { ApellidoValida == false && <p>El campo apellido es requerido</p>   }
+           
+            
+            <h5 className="mb-4" style={{textAlign: 'right'}}>Completa el formulario para finalizar tu compra</h5>
+            {Object.keys(formErrors).length === 0 && isSubmit && (
+            <div className="ui message success"></div>
+            ) }
+            <div style={{  textAlign: 'right', display: 'flex', justifyContent: 'flex-end' }}>
+                <div style={{width: '60%'}}>
+                    <input type="text" name="nombre" className="form-control" maxLength={20} placeholder="Nombre" onChange={leerCampos} value={campos.nombre} />
+                    <p style={{color: 'red', fontFamily: 'Arial', fontSize: '14px'}}>{formErrors.nombre}</p>
+                    
+                    <input type="text" name="apellido" className="form-control" maxLength={30} placeholder="Apellido" onChange={leerCampos} value={campos.apellido} />
+                    <p style={{color: 'red', fontFamily: 'Arial', fontSize: '14px'}}>{formErrors.apellido}</p>
 
-                {/* <input type="text" name="fono"  className="form-control" placeholder="Fono" onChange={leerCampos} value={campos.fono}/> */}
+                    <input type="number" name="fono"  className="form-control" placeholder="Teléfono" onChange={leerCampos} value={campos.fono} />
+                    <p style={{color: 'red', fontFamily: 'Arial', fontSize: '14px'}}>{formErrors.fono}</p>
 
-                <input type="text" name="email"   className="form-control" placeholder="Email" onChange={leerCampos} value={campos.email}/>
-                { EmailValida == false && <p>El campo email esta vacio o incorrecto</p>   }
-                <button onClick={enviarForm} className="btn btn-danger">ENVIAR</button>
+
+                    <input type="text" name="email" className="form-control" maxLength={40}placeholder="Email" onChange={leerCampos} value={campos.email} />
+                    <p style={{color: 'red', fontFamily: 'Arial', fontSize: '14px'}}>{formErrors.email}</p>
+
+                    <button onClick={enviarForm} className="btn btn-danger">REALIZAR TU PEDIDO </button>
+                </div>
             </div>
 
 
-            
+
         </>
     )
 }

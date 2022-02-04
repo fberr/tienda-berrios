@@ -16,7 +16,7 @@ const CartWidget = () => {
         const suma = cart.map(item => item.cantidades).reduce((a, b) => a + b, 0);
         console.log(suma);
 
-   
+       
 
 
     return (

@@ -8,6 +8,7 @@ import CartWidget from './componentes/header/CartWidget';
 import ItemDetailContainer from './componentes/ItemDetailContainer';
 import Carrito from './componentes/Carrito';
 import {CustomProvider} from './componentes/CartContext';
+import Footer from './componentes/Footer';
 
 
 
@@ -21,13 +22,14 @@ const App = () => {
                 <Container className="mt-5 text-center">
                     <Routes>
                         <Route path="/" element={<Home/>} />
-                        <Route path="/todos" element={<ItemListContainer greeting="Hola amig@s, bienvenid@s a la Tienda Destroy !!"/>} />
+                        <Route path="/todos" element={<ItemListContainer greeting="Todos los productos"/>} />
                         <Route path="/carro" element={<Carrito/>} />
-                        <Route path="/categoria/:cat" element={<ItemListContainer greeting="Hola amig@s, bienvenid@s a la Tienda Destroy !!"/>} />
+                        <Route path="/categoria/:cat" element={<ItemListContainer greeting="Categoria:"/>} />
                         <Route path="/producto/:id" element={<ItemDetailContainer/>} />
                         <Route path="*" />
                     </Routes>
                 </Container>
+                <Footer/>
             </BrowserRouter>
             </CustomProvider>
          

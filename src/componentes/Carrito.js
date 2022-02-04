@@ -8,23 +8,43 @@ import CartForm from "./CartForm";
 
 
 const Carrito = () => {
-    const { cart, borrarProducto, vaciar } = useContext(contexto)
+    const { cart, borrarProducto, vaciar} = useContext(contexto)
 
     const [finalizado, setFinalizado] = useState(false);
+    const [showOrder, setshowOrder] = useState();
+    const [state, setstate] = useState();
 
-    console.log(finalizado)
+
+    console.log(finalizado);
 
 
-    const finalizarCompra = () => {
+
+  
+
+    const holaSession = () => { 
+
+     }
+    
+
+    
+
+
+
+
+
+     
+
+
+
+    const finalizarCompra = (campos) => {
         console.log('guardando la compra en la db ');
+        console.log(campos);
+        
+
 
         const ventasCollection = collection(db, "ventas")
         addDoc(ventasCollection, {
-            buyer: {
-                name: "Felipe",
-                lastName: "Berrios",
-                email: "felipe@test.cl"
-            },
+            buyer: campos,
             items: cart,
             date: serverTimestamp(),
             total: total
@@ -32,7 +52,9 @@ const Carrito = () => {
         })
             .then((resultado) => {
                 setFinalizado(true);
-                console.log(resultado);
+                console.log(resultado.id);
+                setshowOrder(resultado.id)
+                
                 vaciar();
             })
 
@@ -40,6 +62,9 @@ const Carrito = () => {
     }
 
     console.log(cart);
+
+
+    
 
     const subtotal = cart.map(function (value) {
 
@@ -54,38 +79,47 @@ const Carrito = () => {
 
     return (
         <>
-            <h1 style={{ marginBottom: 40 }}>Tu Carro</h1>
-            <CartForm></CartForm>
+        
+        
+
+      
+
+            
+            
 
             {finalizado === true ?
                 <>
-                    <h3>Felicidades !!</h3>
+                    <h2>Felicidades !!</h2>
                     <h4 style={{ marginBottom: '30px' }}>Tu compra se ha realizado con éxito</h4>
+                    <h5 style={{ marginBottom: '30px' }}>Tu id de orden de compra es: {showOrder}</h5>
                     <Link to="/" className="btn btn-danger">Volver al Home</Link>
                 </>
                 :
                 <>
+                     <h1 style={{ marginBottom: 40 }}>Tu Carro</h1>
                     {cart.length === 0 ?
                         <>
                             <h3>El carro esta vacio ;(</h3><br />
-                            <Link to="/todos" className="btn btn-danger">Ir a Productos</Link>
+                            <Link to="/todos" className="btn btn-danger" style={{marginBottom: '80px'}}>Ir a Productos</Link>
+                            
                         </>
                         :
                         <>
+                            
                             {cart.map(item => (
                                 <div style={{
                                     display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px dotted lightgrey',
                                     padding: '13px 10px'
                                 }} key={item.producto.id} id={item.producto.id}>
                                     <div>
+                                        <p>{item.producto.name}</p>
                                         <img src={item.producto.pictureUrl} style={{ width: 100 }} />
                                     </div>
                                     <div>
-                                        <p>Producto: {item.producto.name}</p>
-                                        <p>precio: {item.producto.price} </p>
+                                        
+                                        <div>Precio: {item.producto.price} </div>
+                                        <div>categoria: {item.producto.categoria} </div>
                                     </div>
-                                    <div>
-                                        <p>categoria: {item.producto.categoria} </p></div>
                                     <div>
                                         <p>Cantidad: {item.cantidades} </p>
                                     </div>
@@ -99,7 +133,10 @@ const Carrito = () => {
                             <button onClick={() => vaciar()} style={{ float: 'left' }} className="btn btn-outline-danger">Borrar todo</button>
                             <div style={{ float: 'right' }}>
                                 <h3 style={{ marginBottom: "30px" }}>Total: <span>{total}</span></h3>
-                                <button onClick={finalizarCompra} className="btn btn-dark">FINALIZAR COMPRA</button>
+                                
+                            </div>
+                            <div style={{ clear: 'both' }}>
+                                <CartForm finalizarCompra={finalizarCompra} /> 
                             </div>
                         </>
                     }

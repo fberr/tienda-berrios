@@ -177,7 +177,8 @@ const ItemListContainer = (props) => {
             {/* <div className={isActive ? 'activo': 'pasivo'} onClick={toggleClass} >holaaa</div> */}
             <div className="cuadro-bienvenida mb-5">
                 {/* <img src={logoBlack} className="img-fluid logo-negro" /> */}
-                <h2>{props.greeting}</h2>
+                <h2>{props.greeting} {cat}</h2>
+                
             </div>
 
             {/* <ItemCount stock={5} initial={1} onAdd={onAdd} cantidad={cantidad} /> */}
