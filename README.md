@@ -21,4 +21,5 @@ Desde la terminal, lo primero es clonar el repo en la carpeta que elijas con el 
 
 ## Sobre mi
 Soy un Desarrollador Web con skills en tecnologías como **php, javascript, html, css**, y ahora vamos con **React js**.
-Diseñador Gráfico como profesión para luego ir envolviendome en el tema web a traves de los años.
+
+Soy Diseñador Gráfico de profesión para luego ir envolviendome en el tema web a traves de los años.
