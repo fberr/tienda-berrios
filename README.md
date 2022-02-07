@@ -7,12 +7,12 @@ El proyecto consiste en una tienda ecommerce, con sus respectivos productos y su
 
 ## Funcionamiento
 
-Al seleccionar un producto puedes añadirlo al carro con las cantidades que desees, y este producto se añadira al carro, ya en el carro debes llenar el formulario y se guardaran los datos del cliente y de los productos seleccionados.
+Al seleccionar un producto puedes añadirlo al carro con las cantidades que desees, y este producto se añadira al carro, ya en el carro debes llenar el formulario y se guardaran los datos del cliente y de los productos seleccionados en nuestra base de datos.
 
 
 ## Tecnologías utilizadas
 
-El proyecto fue realizado con **create react app, react router, bootstrap react, context, firebase firestore** para guardar los productos y las compras realizadas con los datos del cliente.
+El proyecto fue realizado con **create react app, react router, bootstrap react, context, fech api, firebase firestore** para guardar los productos y las compras realizadas con los datos del cliente.
 
 
 ## ¿ Como puedo inicializar el proyecto ?
