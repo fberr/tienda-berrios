@@ -10,14 +10,14 @@ El proyecto consiste en una tienda ecommerce, con sus respectivos productos y su
 Al seleccionar un producto puedes añadirlo al carro con las cantidades que desees, y este producto se añadira al carro, ya en el carro debes llenar el formulario y se guardaran los datos del cliente y de los productos seleccionados.
 
 
-## Tecnologias utilizadas
+## Tecnologías utilizadas
 
 El proyecto fue realizado con **create react app, react router, bootstrap react, context, firebase firestore** para guardar los productos y las compras realizadas con los datos del cliente.
 
 
-## Como puedo inicializar el proyecto
+## ¿ Como puedo inicializar el proyecto ?
 
-Desde la terminal, lo primero es clonar el repo en la carpeta que elijas **git clone https://github.com/fberr/tienda-berrios.git**, ya dentro de la carpeta del proyecto clonado ejecutas el comando **npm install** para instalar la carpeta de node modules, luego escibes **npm start** para arrancar el proyecto y listo!!. El proyecto ya estará visible en el navegador.
+Desde la terminal, lo primero es clonar el repo en la carpeta que elijas con el comando **git clone https://github.com/fberr/tienda-berrios.git**, ya dentro de la carpeta del proyecto clonado ejecutas el comando **npm install** para instalar la carpeta de node modules, luego escibes **npm start** para arrancar el proyecto y listo!!. El proyecto ya estará visible en el navegador.
 
 Documentacion oficial de [React js](https://reactjs.org/).
 
