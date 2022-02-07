@@ -3,7 +3,7 @@
 
 # Documentación del proyecto
 
-El proyecto consiste en una plataforma tienda tipo ecommerce, con sus respectivos productos y su carro de compras realizado con el framework de javascript React js.
+El proyecto consiste en una tienda ecommerce, con sus respectivos productos y su carro de compras realizado con el framework de javascript React js.
 
 ## Funcionamiento
 
@@ -12,7 +12,7 @@ Al seleccionar un producto puedes añadirlo al carro con las cantidades que dese
 
 ## Tecnologias utilizadas
 
-El proyecto fue realizado con **create react app, react router, bootstrap react, context, firebase firestore** para guardar los productos y las compras realizadas.
+El proyecto fue realizado con **create react app, react router, bootstrap react, context, firebase firestore** para guardar los productos y las compras realizadas con los datos del cliente.
 
 
 ## Como puedo inicializar el proyecto
