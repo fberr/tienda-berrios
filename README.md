@@ -7,7 +7,7 @@ El proyecto consiste en una tienda ecommerce, con sus respectivos productos y su
 
 ## Funcionamiento
 
-Al seleccionar un producto puedes añadirlo al carro con las cantidades que desees, y este producto se añadira al carro, ya en el carro debes llenar el formulario y se guardaran los datos del cliente y de los productos seleccionados en nuestra base de datos.
+Al seleccionar un producto puedes añadirlo al carro con las cantidades que desees, y este producto se añadirá, ya en el carro debes llenar el formulario para terminar tu compra, al finalizar se guardaran los datos del cliente y de los productos seleccionados en nuestra base de datos.
 
 
 ## Tecnologías utilizadas
