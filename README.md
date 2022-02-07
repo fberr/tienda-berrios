@@ -15,10 +15,10 @@ Al seleccionar un producto puedes añadirlo al carro con las cantidades que dese
 El proyecto fue realizado con **create react app, react router, bootstrap react, context, fech api, firebase firestore** para guardar los productos y las compras realizadas con los datos del cliente.
 
 
-## ¿ Como puedo inicializar el proyecto ?
+## ¿ Cómo puedo inicializar el proyecto ?
 
 Desde la terminal, lo primero es clonar el repo en la carpeta que elijas con el comando **git clone https://github.com/fberr/tienda-berrios.git**, ya dentro de la carpeta del proyecto clonado ejecutas el comando **npm install** para instalar la carpeta de node modules, luego escibes **npm start** para arrancar el proyecto y listo!!. El proyecto ya estará visible en el navegador.
 
-Documentacion oficial de [React js](https://reactjs.org/).
-
-
+## Sobre mi
+Soy un Desarrollador Web con skills en tecnologías como **php, javascript, html, css**, y ahora vamos con **React js**.
+Diseñador Gráfico como profesión para luego ir envolviendome en el tema web a traves de los años.
